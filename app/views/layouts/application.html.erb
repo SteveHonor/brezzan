@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Shrine Rails Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Shrine Rails demo featuring multiple file uploads to S3 with Uppy" />
+<head>
+  <title>Shrine Rails Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Shrine Rails demo featuring multiple file uploads to S3 with Uppy" />
 
-    <script src="https://unpkg.com/babel-polyfill@6.26.0/dist/polyfill.min.js"></script>
-    <script src="https://unpkg.com/whatwg-fetch@2.0.3/fetch.js"></script>
-    <script src="https://transloadit.edgly.net/releases/uppy/v0.28.0/dist/uppy.min.js"></script>
+  <script src="https://unpkg.com/babel-polyfill@6.26.0/dist/polyfill.min.js"></script>
+  <script src="https://unpkg.com/whatwg-fetch@2.0.3/fetch.js"></script>
+  <script src="https://transloadit.edgly.net/releases/uppy/v0.28.0/dist/uppy.min.js"></script>
 
-    <link href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css" media="screen" rel="stylesheet" />
-    <link href="https://transloadit.edgly.net/releases/uppy/v0.28.0/dist/uppy.min.css" rel="stylesheet" />
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
-    <script type="text/template" id="template-photo">
-      <%= render partial: "albums/photo", locals: { photo: Photo.new, idx: "{{index}}" } %>
-    </script>
+  <link href="https://transloadit.edgly.net/releases/uppy/v0.28.0/dist/uppy.min.css" rel="stylesheet" />
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 
-    <%= csrf_meta_tags %>
-  </head>
+  <script type="text/template" id="template-photo">
+    <%= render partial: "albums/photo", locals: { photo: Photo.new, idx: "{{index}}" } %>
+  </script>
 
-  <body>
-    <div class="container">
-      <%= yield %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+
+      <ul class="nav flex-column">
+        <router-link :to="'/'" class="logo">
+          Fotografia
+        </router-link>
+        <li class="nav-item mt-4">
+          <router-link class="nav-link" :to="'/clients'">
+            <i class="fal fa-user"></i>
+            <span>Usuários</span>
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="'/config'">
+            <i class="fal fa-cog"></i>
+            <span>Configurações</span>
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" @click="logout()">
+            <i class="fal fa-sign-out-alt"></i>
+            <span>Sair</span>
+          </a>
+        </li>
+      </ul>
     </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="mt-4">
+        <%= yield %>
+      </div>
+      </div>
+    </div>
+  </div>
 
-    <%= javascript_include_tag 'application' %>
-  </body>
+  <%= javascript_include_tag 'application' %>
+</body>
 </html>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="float-left">
+
+<h4>Clientes</h4>
+</div>
+<div class="float-right">
+
+<%= link_to 'Novo Cliente', new_user_path, class: 'btn btn-sm btn-primary' %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td class="text-right">
+          <%= link_to 'Eventos', user_events_path(user.id), class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'Excluir', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

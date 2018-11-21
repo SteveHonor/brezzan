@@ -1,3 +1,21 @@
+/*
+*= require bootstrap
+*= require_tree .
+*= require_self
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  background-color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  color: #596B8C;
+}
+
+h1 {
+  font-weight: lighter;
+}
+
 .container {
   width: 800px;
 }
@@ -17,4 +35,61 @@
 .image-preview {
   margin-top: 10px;
   display: inline-block;
+}
+
+.img-thumbnail {
+  height: 156px;
+  object-fit: scale-down;
+}
+
+.sidebar {
+  height: 100vh;
+  padding: 10px 0 0 25px;
+
+  .nav-link {
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .logo {
+    padding: 5px 11px 18px;
+    font-weight: 800;
+    font-size: 18px;
+    display: block;
+    text-decoration: none;
+    z-index: 9999;
+    color: #596B8C;
+    line-height: 30px
+  }
+
+  .nav-item {
+    .nav-link {
+      &.active {
+        color: #0070E0;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .nav-item {
+    .nav-link {
+      color: #596B8C;
+      line-height: 1.5;
+      padding: 10px;
+      width: 200px;
+      i {
+        margin-right: 10px;
+        font-size: 13px;
+        vertical-align: middle;
+        line-height: 22px;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+  }
 }

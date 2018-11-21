@@ -1,3 +1,4 @@
+//= require bootstrap
 // This code uses:
 //
 // * babel-polyfill (https://babeljs.io/docs/usage/polyfill/)

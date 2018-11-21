@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.all
+    @albums = Album.where(event_id: params[:event_id])
   end
 
   def new
@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(album_params)
+    @album = Album.new(album_params.merge(event_id: params[:event_id]))
 
     if @album.valid?
       @album.save

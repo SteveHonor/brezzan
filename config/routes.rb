@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  root to: 'albums#index'
+  devise_for :users
+  root to: 'users#index'
 
-  resources :albums
+  resources :users do
+    resources :events do
+      resources :albums
+    end
+  end
 
   if Rails.env.production?
     mount Shrine.presign_endpoint(:cache) => "/s3/params"
